@@ -1,4 +1,4 @@
-APP_NAME ?= hello_app_v1
+APP_NAME ?= hello_app_v4
 APP_BIN ?= $(APP_NAME).bin
 
 default:
