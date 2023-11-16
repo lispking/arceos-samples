@@ -9,7 +9,7 @@ build_image() {
     local app_seek=$2
 
     # Compile Apps
-    make APP=${app_name}
+    make APP=${app_name} compile
 
     # Get App Size
     if [ "$(uname)" == "Darwin" ]; then

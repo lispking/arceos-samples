@@ -3,14 +3,15 @@ APP ?= hello_app
 PAYLOAD_PATH ?= $(shell pwd)/../arceos/payload
 PAYLOAD_BIN ?= apps.bin
 
-default:
+compile:
 	cd $(APP) && $(MAKE)
 
+default: compile
 	dd if=/dev/zero of=./$(PAYLOAD_BIN) bs=1M count=32
 	dd if=$(APP)/$(APP).bin of=./$(PAYLOAD_BIN) conv=notrunc
 
 	mkdir -p $(PAYLOAD_PATH)
-	cp ./$(PAYLOAD_BIN) $(PAYLOAD_PATH)/$(PAYLOAD_BIN)
+	mv ./$(PAYLOAD_BIN) $(PAYLOAD_PATH)/$(PAYLOAD_BIN)
 
 	xxd -ps $(APP)/$(APP).bin
 
