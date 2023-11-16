@@ -31,14 +31,24 @@ build_image() {
 # Create App Bin
 dd if=/dev/zero of=./${APP_BIN} bs=1M count=32
 
-# Write App Num to App Bin
-APP_NUM=2
-printf "$(printf '%04x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
-
 if [ "$1" == "ch3" ]; then
+    # Write App Num to App Bin
+    APP_NUM=2
+    printf "$(printf '%04x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
+
     build_image hello_app_v3 2
     build_image hello_app_v1 8
+elif [ "$1" == "ch5" ]; then
+    # Write App Num to App Bin
+    APP_NUM=1
+    printf "$(printf '%04x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
+
+    build_image hello_app_v5 2
 else
+    # Write App Num to App Bin
+    APP_NUM=2
+    printf "$(printf '%04x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
+
     build_image hello_app_v1 2
     build_image hello_app_v2 10
 fi
