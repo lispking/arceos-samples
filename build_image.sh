@@ -19,7 +19,7 @@ build_image() {
     fi
 
     # Write App Size to App Bin
-    printf "$(printf '%04x' $app_size)" | xxd -ps | dd of=./${APP_BIN} conv=notrunc bs=1 seek=${app_seek}
+    printf "$(printf '%04x' $app_size)" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=${app_seek}
 
     # Write App to App Bin
     local app_seek_file=$(($app_seek + 2))
@@ -33,7 +33,7 @@ dd if=/dev/zero of=./${APP_BIN} bs=1M count=32
 
 # Write App Num to App Bin
 APP_NUM=2
-printf "$(printf '%02x' ${APP_NUM})" | xxd -ps | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
+printf "$(printf '%02x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
 
 build_image hello_app_v1 1
 build_image hello_app_v2 9
