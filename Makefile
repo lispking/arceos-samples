@@ -18,4 +18,5 @@ default: compile
 clean:
 	cd hello_app_v1 && $(MAKE) clean
 	cd hello_app_v2 && $(MAKE) clean
+	cd hello_app_v3 && $(MAKE) clean
 	cd hello_app_v4 && $(MAKE) clean

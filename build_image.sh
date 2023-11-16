@@ -35,8 +35,8 @@ dd if=/dev/zero of=./${APP_BIN} bs=1M count=32
 APP_NUM=2
 printf "$(printf '%04x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
 
-build_image hello_app_v1 2
-build_image hello_app_v2 10
+build_image hello_app_v3 2
+build_image hello_app_v1 8
 
 mkdir -p ${APP_PATH}
 mv ./${APP_BIN} ${APP_PATH}/${APP_BIN}
