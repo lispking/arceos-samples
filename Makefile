@@ -1,5 +1,7 @@
 APP ?= hello_app
 
+DIRS := $(shell ls -d */)
+
 PAYLOAD_PATH ?= $(shell pwd)/../arceos/payload
 PAYLOAD_BIN ?= apps.bin
 
@@ -16,10 +18,4 @@ default: compile
 	xxd -ps $(APP)/$(APP).bin
 
 clean:
-	cd hello_app_v1 && $(MAKE) clean
-	cd hello_app_v2 && $(MAKE) clean
-	cd hello_app_v3 && $(MAKE) clean
-	cd hello_app_v4 && $(MAKE) clean
-	cd hello_app_v5 && $(MAKE) clean
-	cd hello_app_v6 && $(MAKE) clean
-	cd hello_app_v6d && $(MAKE) clean
+	$(foreach N,$(DIRS),$(MAKE) -C $(N) clean;)
