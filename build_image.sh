@@ -44,6 +44,13 @@ elif [ "$1" == "ch5" ]; then
     printf "$(printf '%04x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
 
     build_image hello_app_v5 2
+elif [ "$1" == "ch6" ]; then
+    # Write App Num to App Bin
+    APP_NUM=2
+    printf "$(printf '%04x' ${APP_NUM})" | xxd -p -r | dd of=./${APP_BIN} conv=notrunc bs=1 seek=0
+
+    build_image hello_app_v6 2
+    build_image hello_app_v6d 50
 else
     # Write App Num to App Bin
     APP_NUM=2

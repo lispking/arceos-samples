@@ -20,3 +20,6 @@ clean:
 	cd hello_app_v2 && $(MAKE) clean
 	cd hello_app_v3 && $(MAKE) clean
 	cd hello_app_v4 && $(MAKE) clean
+	cd hello_app_v5 && $(MAKE) clean
+	cd hello_app_v6 && $(MAKE) clean
+	cd hello_app_v6d && $(MAKE) clean
